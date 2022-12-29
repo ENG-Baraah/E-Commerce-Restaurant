@@ -1,0 +1,77 @@
+﻿
+
+@model IEnumerable<MenuItem>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <center>
+            <div class="thumbnail col-sm-10 col-sm-offset-1">
+                <div class="row">
+                    <div class="col-sm-10">
+                        @*Model.IndexVM.MenuItems.Where(u => u.CategoryType.Name.Equals(category.Name)))*@
+
+                        @if (item.FoodType.Name.Equals("قسم المعجنات"))
+                        {
+                            <label class="text-primary" style="font-size:30px;">@item.Name</label>
+                            <br />
+                            @if (item.Spicyness == "0")
+                                {
+                                <label class="label label-success" style="width:100px;height:25px;">@MenuItem.ESpicy.Mild</label>
+                            }
+                            @if (item.Spicyness == "1")
+                            {
+                                <label class="label label-warning" style="width:100px;height:25px;">@MenuItem.ESpicy.Moderate</label>
+                        }
+                        @if (item.Spicyness == "2")
+                        {
+                                <label class="label label-danger" style="width:100px;height:25px;">@MenuItem.ESpicy.High</label>
+                            }
+
+
+
+
+
+
+
+                            <label class="label label-default" style="width:100px;height:25px;">@item.FoodType.Name</label>
+
+
+                            <div class="col-sm-6 text-right" style="font-size:30px; font-weight:100;">
+                                <h4>@item.Price ل.س </h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <p>@item.Descrption</p>
+                                </div>
+                                <div class="col-sm-2 text-right">
+                                    <a asp-page="Details" class="btn btn-primary btn-sm" asp-route-id="@item.Id">تفاصيل</a>
+
+                                </div>
+                                <br /> <br />
+                            </div>
+                            <div class="row">
+                                <center><img src="@item.Image" width="100%" height="100%" /></center>
+                            </div>
+                        }
+                      
+                    </div>
+                </div>
+                @*<div class="row">
+                        <div class="col-sm-10">
+                            <p>@item.Descrption</p>
+                        </div>
+                        <div class="col-sm-2 text-right">
+                            <a asp-page="Details" class="btn btn-primary btn-sm" asp-route-id="@item.Id">Details</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <center><img src="@item.Image" width="100%" height="100%"/></center>
+                    </div>*@
+            </div>
+        </center>
+    }
+}

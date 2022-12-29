@@ -1,0 +1,62 @@
+﻿@page
+@model TasteRestaurant.Pages.MenuItems.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br /><br />
+<h2>
+    قائمة الطعام
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+
+    <a asp-page="Create" type="button" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span>
+        &nbsp;إنشاء وجبة طعام جديدة
+    </a>
+</h2>
+<br /><br /><br />
+<div class="form-border">
+    <table class="table">
+        <tr>
+            <th>
+                @* @Html.DisplayNameFor(m => m.MenuItem[0].Name)*@
+                اسم وجبة الطعام
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(m => m.MenuItem[0].Price)*@
+                سعر الوجبة
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(m => m.MenuItem[0].CategoryType.Name)*@
+                صنف الوجبة
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(m => m.MenuItem[0].FoodType.Name)*@
+                اسم المطعم المنتج
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.MenuItem)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.CategoryType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.FoodType.Name)
+                </td>
+                <td>
+                    @Html.Partial("_TableButtonsPartial", new IndividualButtonPartial { Id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

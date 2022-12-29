@@ -1,0 +1,46 @@
+﻿@page
+@model TasteRestaurant.Pages.CategoryTypes.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<br /><br />
+<h2>
+    قائمة بأنماط الأصناف
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+
+    <a asp-page="Create" type="button" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span>
+        &nbsp; إنشاء صنف جديد
+    </a>
+</h2>
+<br /><br />
+<div class="form-border">
+    <table class="table">
+        <tr>
+            <th>
+               @* @Html.DisplayNameFor(m => m.CategoryType[0].Name)*@
+                اسم الصنف
+            </th>
+            <th>
+               @* @Html.DisplayNameFor(m => m.CategoryType[0].DisplayOrder)*@
+                ترتيب الصنف
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.CategoryType)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.DisplayOrder)
+                </td>
+                <td>
+                    @Html.Partial("_TableButtonsPartial", new IndividualButtonPartial { Id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,62 @@
+﻿@model TasteRestaurant.ViewModel.OrderDetailsViewModel
+<br /><br /><br /><br />
+<div class="col-sm-5">
+    رقم الطلب  : @Model.OrderHeader.Id
+    <ul>
+        @foreach (var details in Model.OrderDetail)
+        {
+            <li>@details.Name x @details.Count</li>
+        }
+    </ul>
+</div>
+<div class="col-sm-5">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-2">
+            Order Total
+        </div>
+        <div class="col-sm-6">
+            ل.س @Model.OrderHeader.OrderTotal
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-2">
+            وقت تسليم الطلبية  :
+        </div>
+        <div class="col-sm-6">
+            @Model.OrderHeader.OrderDate.ToShortDateString() &nbsp; @Model.OrderHeader.PickUpTime.ToShortTimeString()
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-2">
+            حالات الطلب  :
+        </div>
+        <div class="col-sm-6">
+            @Model.OrderHeader.Status
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-2">
+            اسم المطعم :
+        </div>
+        <div class="col-sm-6">
+            @Model.OrderHeader.CommentsResName
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-2">
+            عنوان البيت:
+        </div>
+        <div class="col-sm-6">
+            @Model.OrderHeader.CommentsDesAdress
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-2">
+            تعليقات حول الطلب
+        </div>
+        <div class="col-sm-6">
+            @Model.OrderHeader.Comments
+        </div>
+    </div>
+</div>
+<div class="col-sm-2"></div>
